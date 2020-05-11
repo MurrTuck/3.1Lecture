@@ -15,12 +15,29 @@ Person.prototype.introduceSelf = function () {
 const godzilla = new Person('Godzilla', 5000, 'Dawn of time')
 const mothra = new Person('Mothra', 420, 'May 16th')
 
-godzilla.introduceSelf()
-mothra.introduceSelf()
+// godzilla.introduceSelf()
+// mothra.introduceSelf()
 //Classes
 //Create a class called Aircraft that takes in name and range, a string and number respectively.  Also initialize a property called milesFlown and set it to 0.  Attach a prototype method called fly that add the range of the aircraft to the milesFlown.  Then return the updated object.
 
+class Aircraft {
+    constructor(name, range) {
+        this.name = name
+        this.range = range
+        this.milesFlown = 0
+    }
+    fly() {
+        // this.milesFlown = this.milesFlown + this.range
+        this.milesFlown += this.range //this is shortand for the line above
+        return this
+    }
+}
+
 //Use your class to create a new Aircraft and invoke fly.
+let ufo = new Aircraft('Planet Express', 10)
+
+// ufo.fly()
+console.log(ufo.fly())
 
 //Create a new class called Plane that extends aircraft.  It should also take in passengerCount and initialize a passengersFlown property at 0 and a destinations property as an empty array.  Modify the exising fly method to take in a destination parameter, It should add the passengerCount to the passengersFlown and push the destination to the destinations array.  It should  return a string stating 'name has flown passengersFlown passengers a total of milesFlown miles.  It has gone to destinations'.  Make sure all previous functionality of fly is maintained.
 
