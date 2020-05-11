@@ -22,26 +22,69 @@ const mothra = new Person('Mothra', 420, 'May 16th')
 
 class Aircraft {
     constructor(name, range) {
-        this.name = name
-        this.range = range
-        this.milesFlown = 0
+        this.name = name;
+        this.range = range;
+        this.milesFlown = 0;
     }
     fly() {
-        // this.milesFlown = this.milesFlown + this.range
-        this.milesFlown += this.range //this is shortand for the line above
+        this.milesFlown += this.range;
         return this
     }
 }
 
 //Use your class to create a new Aircraft and invoke fly.
-let ufo = new Aircraft('Planet Express', 10)
+const ufo = new Aircraft('Planet Express', 10)
+ufo.fly()
 
-// ufo.fly()
-console.log(ufo.fly())
+// extends example
+class People {
+    constructor(name) {
+        this.name = name
+    }
+    greet() {
+        console.log(`Hello, I'm ${this.name}`)
+    }
+}
+
+const adam = new People('Adam')
+
+class Athlete extends People {
+    constructor(name, sport) {
+        super(name)
+        this.sport = sport;
+    }
+    greet() {
+        console.log(`Hello, I'm ${this.name} and I play ${this.sport}`)
+    }
+}
+
+const andrew = new Athlete('Andrew', 'Overwatch')
+// andrew.greet()
+// andrew.sayHi()
 
 //Create a new class called Plane that extends aircraft.  It should also take in passengerCount and initialize a passengersFlown property at 0 and a destinations property as an empty array.  Modify the exising fly method to take in a destination parameter, It should add the passengerCount to the passengersFlown and push the destination to the destinations array.  It should  return a string stating 'name has flown passengersFlown passengers a total of milesFlown miles.  It has gone to destinations'.  Make sure all previous functionality of fly is maintained.
 
-//Use yoru class to create a new Airplane and make it fly somewhere!
+class Plane extends Aircraft {
+    constructor(name, range, passengerCount) {
+        super(name, range);
+        this.passengerCount = passengerCount;
+        this.passengersFlown = 0;
+        this.destinations = []
+    }
+    fly(destination) {
+        this.passengersFlown += this.passengerCount;
+        this.destinations.push(destination)
+        super.fly()
+        return `${this.name} has flown ${this.passengersFlown} a total of ${this.milesFlown} miles. It has gone to ${this.destinations}`
+    }
+}
+
+const concorde = new Plane('concorde', 600, 42)
+console.log(concorde.fly('Aruba'))
+console.log(concorde.fly('Jamaica'))
+console.log(concorde.fly('Oooo I want to take ya'))
+
+//Use your class to create a new Airplane and make it fly somewhere!
 
 //Create a new class called PrivateJet that extends Plane.  It should also take in an owner property. Modify the existing fly method to instead return 'name has flown owner and passengersFlown friends milesFlown miles.  It has gone to destinations.  Make sure all previous functionality of fly is maintained.
 
