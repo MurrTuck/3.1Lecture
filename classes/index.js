@@ -80,9 +80,9 @@ class Plane extends Aircraft {
 }
 
 const concorde = new Plane('concorde', 600, 42)
-console.log(concorde.fly('Aruba'))
-console.log(concorde.fly('Jamaica'))
-console.log(concorde.fly('Oooo I want to take ya'))
+// console.log(concorde.fly('Aruba'))
+// console.log(concorde.fly('Jamaica'))
+// console.log(concorde.fly('Oooo I want to take ya'))
 
 //Use your class to create a new Airplane and make it fly somewhere!
 
