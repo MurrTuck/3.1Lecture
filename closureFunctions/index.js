@@ -18,10 +18,12 @@ function outer() {
     return inner;
 }
 
+// console.log(outer())
+
 // what is the value of closure? 
 var closure1 = outer();
 var closure2 = outer();
-// console.log(closure1)
+var chocolateIceCream = outer();
 
 // Since closure1 is a function, we can invoke it.
 // closure1()
@@ -32,9 +34,30 @@ var closure2 = outer();
 // closure1();
 // closure1();
 // closure2();
+// chocolateIceCream();
+// chocolateIceCream();
+// chocolateIceCream();
+// chocolateIceCream();
 
 
 // the closure retains a reference to any local variables in the parent function's scope.
+
+function orderCreator() {
+    let listOfIngredients = [];
+    function addIngredient(...ing) {
+        listOfIngredients.push(...ing)
+        console.log('List: ', listOfIngredients)
+    }
+    return addIngredient
+}
+
+let nitinSandwich = orderCreator()
+nitinSandwich('extra mayo', 'doritos', 'pickles', 'cottage cheese', 'cheese whiz')
+
+let johnSandwich = orderCreator()
+johnSandwich('bacon')
+johnSandwich('lettuce')
+johnSandwich('tomato')
 
 
 // MODULE PATTERN
@@ -67,10 +90,37 @@ var module1 = modulePattern();
 // module1.changeVar('changing private var through public method');
 // module1.readVar()
 
+// add, subtract, mult, divide
+function calculatorCreator() {
+    let startVal = 0;
+    return {
+        add: function (val) {
+            return startVal += val
+        },
+        substract: function (val) {
+            return startVal -= val
+        },
+        mult: function (val) {
+            return startVal *= val
+        },
+        divide: function (val) {
+            return startVal /= val
+        }
 
+    }
+}
 
+const calculon = calculatorCreator()
+// console.log(calculon)
 
+calculon.add(1)
+calculon.add(33)
+calculon.substract(22)
+calculon.mult(12)
+calculon.divide(6)
 
+// let calc = calculatorCreator()
+// calc.add(12)
 
 
 
