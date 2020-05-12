@@ -103,3 +103,77 @@ const concorde = new Plane('concorde', 600, 42)
 //Module Pattern
 
 //Use the module pattern to create a calculator.  It should have functionality to add, subtract, multiply, divide, and clear.
+
+
+
+//Example found here: https://youtu.be/RBLIm5LMrmc
+class User {
+    constructor(username, email, password) {
+        this.username = username
+        this.email = email
+        this.password = password
+    }
+
+    register() {
+        console.log(`${this.username} with the email ${this.email} is now registered`)
+    }
+}
+
+let bob = new User("Bob", 'bob@email.com', '12345')
+console.log(bob)
+bob.register()
+
+class Member extends User {
+    constructor(username, email, password, memberPackage) {
+        super(username, email, password)
+        this.memberPackage = memberPackage
+    }
+
+    getmemberPackage() {
+        console.log(`${this.username} is subsribed to the ${this.memberPackage} package`)
+    }
+}
+
+let mike = new Member('mike', 'mike@email.com', '098765', 'Standard')
+mike.getmemberPackage()
+
+// ------------------------------------------------------------------------------------
+
+class Employee {
+    constructor(first_name, last_name, email, age) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.age = age;
+    }
+    makeWidget() {
+        console.log(`${this.first_name} ${this.last_name} Widget`)
+    }
+}
+
+let newEmployee = new Employee("Murray", "Tucker", "murray@email.com", 34)
+console.log(newEmployee)
+newEmployee.makeWidget()
+
+class Manager extends Employee {
+    constructor(first_name, last_name, email, age, reports = []) {
+        super(first_name, last_name, email, age)
+        this.reports = reports
+    }
+    hire(employee) {
+        this.reports.push(employee)
+    }
+    fire(index) {
+        this.reports.splice(index, 1)
+    }
+}
+
+let newManager = new Manager('Kels', 'Tuck', 'kelsey@email.com', 33, 'Murray')
+console.log(newManager)
+Manager.fire()
+
+let newManager2 = new Manager('', 'Tuck', 'kelsey@email.com', 33, 'Murray')
+console.log(newManager)
+
+
+
